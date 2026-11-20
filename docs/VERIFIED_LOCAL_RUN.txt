@@ -1,0 +1,118 @@
+SkyPoints local verification (2026-11-20 as-of date)
+===============================
+Baseline:
+member_profiles_20240115.txt: {'seen': 5, 'accepted': 5, 'rejected': 0, 'older': 0, 'unchanged': 0}
+australia.xlsx: {'seen': 3, 'accepted': 2, 'rejected': 1, 'older': 0, 'unchanged': 0}
+usa.csv: {'seen': 3, 'accepted': 2, 'rejected': 1, 'older': 0, 'unchanged': 0}
+india.csv: {'seen': 3, 'accepted': 3, 'rejected': 0, 'older': 0, 'unchanged': 0}
+redemptions_20240115.json: {'seen': 2, 'accepted': 2, 'rejected': 0, 'unchanged': 0, 'older': 0}
+{
+  "raw_member_rows": 14,
+  "staged_rows": 12,
+  "current_members": 12,
+  "quarantined": 2,
+  "redemptions": 2,
+  "country_counts": {
+    "IND": 4,
+    "USA": 3,
+    "AUS": 3,
+    "PHL": 1,
+    "CAN": 1
+  },
+  "redemptions_joined": [
+    {
+      "member_key": "GLOBAL:223457",
+      "member_name": "Elena",
+      "country_code": "USA",
+      "partner": "AeroLink",
+      "txn_id": "RX10091",
+      "miles_redeemed": 12000,
+      "status": "COMPLETED"
+    },
+    {
+      "member_key": "GLOBAL:223457",
+      "member_name": "Elena",
+      "country_code": "USA",
+      "partner": "SkyPoints",
+      "txn_id": "RX10092",
+      "miles_redeemed": 5000,
+      "status": "PENDING"
+    }
+  ],
+  "rejection_reasons": [
+    {
+      "source_file": "australia.xlsx",
+      "source_row": 2,
+      "reason": "INVALID_DATE:2021-13-13"
+    },
+    {
+      "source_file": "usa.csv",
+      "source_row": 2,
+      "reason": "AMBIGUOUS_US_DATE:1052022"
+    }
+  ]
+}
+
+Synthetic country move:
+member_profiles_20240115.txt: {'seen': 5, 'accepted': 5, 'rejected': 0, 'older': 0, 'unchanged': 0}
+australia.xlsx: {'seen': 3, 'accepted': 2, 'rejected': 1, 'older': 0, 'unchanged': 0}
+usa.csv: {'seen': 3, 'accepted': 2, 'rejected': 1, 'older': 0, 'unchanged': 0}
+india.csv: {'seen': 3, 'accepted': 3, 'rejected': 0, 'older': 0, 'unchanged': 0}
+redemptions_20240115.json: {'seen': 2, 'accepted': 2, 'rejected': 0, 'unchanged': 0, 'older': 0}
+SYNTHETIC MOVE member_profiles_20240116.txt: {'seen': 1, 'accepted': 1, 'rejected': 0, 'older': 0, 'unchanged': 0}
+{
+  "raw_member_rows": 15,
+  "staged_rows": 13,
+  "current_members": 12,
+  "quarantined": 2,
+  "redemptions": 2,
+  "country_counts": {
+    "IND": 5,
+    "USA": 2,
+    "AUS": 3,
+    "PHL": 1,
+    "CAN": 1
+  },
+  "redemptions_joined": [
+    {
+      "member_key": "GLOBAL:223457",
+      "member_name": "Elena",
+      "country_code": "IND",
+      "partner": "AeroLink",
+      "txn_id": "RX10091",
+      "miles_redeemed": 12000,
+      "status": "COMPLETED"
+    },
+    {
+      "member_key": "GLOBAL:223457",
+      "member_name": "Elena",
+      "country_code": "IND",
+      "partner": "SkyPoints",
+      "txn_id": "RX10092",
+      "miles_redeemed": 5000,
+      "status": "PENDING"
+    }
+  ],
+  "rejection_reasons": [
+    {
+      "source_file": "australia.xlsx",
+      "source_row": 2,
+      "reason": "INVALID_DATE:2021-13-13"
+    },
+    {
+      "source_file": "usa.csv",
+      "source_row": 2,
+      "reason": "AMBIGUOUS_US_DATE:1052022"
+    }
+  ]
+}
+
+Move verification:
+ELENA COUNTRY MOVE CHECK
+target | copies
+USA | 0
+IND | 1
+
+Tests:
+..............                                                           [100%]
+14 passed in 0.30s
