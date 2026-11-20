@@ -1,16 +1,23 @@
-# AI usage log — fill in with your actual work
+﻿# AI Usage and Verification Log
 
-The assessment explicitly asks candidates to use AI. Describe how you used it and **what you personally verified**.
+I used ChatGPT to help generate the initial SkyPoints ETL implementation, Snowflake SQL design, documentation, and automated test cases.
 
-| Date | Task | AI assistance / prompt summary | What I independently checked | Result / commit |
-|---|---|---|---|---|
-| [fill] | Initial architecture | Asked for raw/staging/canonical/country design | [fill] | [fill] |
-| [fill] | Date parsing | Asked how to handle inconsistent US dates | [fill] | [fill] |
-| [fill] | Latest-wins | Asked for atomic country move design | [fill] | [fill] |
-| [fill] | Tests | Asked for edge cases and regression tests | [fill] | [fill] |
+I executed the Python pipeline locally, reviewed the processing logic, inspected the database results, and ran the automated tests.
 
-Suggested honest summary after doing the work:
+| Date | Task | AI Assistance | My Verification |
+|---|---|---|---|
+| 2026-11-20 | Architecture | Helped design raw, staging, current-member, and country-specific tables | Inspected pipeline.py and successfully executed the local ETL |
+| 2026-11-20 | Data validation | Helped implement source-specific date parsing and rejection handling | Verified two rejected records and their rejection reasons |
+| 2026-11-20 | Incremental processing | Helped implement duplicate detection and latest-record-wins logic | Verified unchanged records were skipped on rerun |
+| 2026-11-20 | Country movement | Helped implement member updates across country tables | Executed synthetic Elena move; confirmed USA=0 and India=1 |
+| 2026-11-20 | Automated tests | Helped generate Python test cases | Ran pytest -v locally; all 14 tests passed |
+| 2026-11-20 | GitHub | Assisted with Git initialization and repository submission | Created the Git commit and successfully pushed the project |
 
-> I used ChatGPT to accelerate the initial architecture, code structure, and test-case generation. I reviewed the assumptions, ran the code and tests locally, examined invalid and ambiguous source data, and verified that the country move is atomic and idempotent. I documented unverified source contracts and kept the cloud-scale architecture separate from the local demonstration.
+## Limitations
 
-**Only include the checks and experiments you actually performed.** Don't state that you tested on Snowflake, processed billions of records, or completed benchmark runs unless you did so.
+- SQLite was used for local execution and testing.
+- Snowflake SQL was provided as a production design but was not executed in Snowflake.
+- Billion-record performance was not benchmarked.
+- The country-movement demonstration used a synthetic update.
+- Sample source files were reconstructed from assessment examples.
+- Some source date-format and record-ordering assumptions require confirmation.
